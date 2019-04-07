@@ -1,0 +1,115 @@
+#header {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 99;
+  padding: 40px 15px;
+  img{
+    max-width: 300px;
+  }
+  @include media('<sm'){
+    img{
+      max-width: 100px;
+    }
+  }
+}
+.right{
+  padding: 50px 0;
+  height:100%;
+  flex-basis: 33.3%!important;
+  max-width: 33.3%!important;
+  margin-left: 16.7%;
+  display: flex;
+  position: relative;
+  .filter-home-wrapper{
+    position: relative;
+    &:after{
+      right: -50px;
+      width: 2px;
+      content: '';
+      position: absolute;
+      height: 100%;
+      background: white;
+    }
+    font-size: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    a{
+      pointer-events: none;
+      color: white;
+      transition: .2s ease-out;
+      text-align: right;
+      position: relative;
+      &:before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -75px;
+        width: 50px;
+        height: 2px;
+        background: white;
+        transition: .2s ease-out;
+        transform: translateX(-15px);
+        opacity: 0;
+      }
+    }
+    span{
+      text-align: right;
+      font-weight: 700;
+      color: white;
+    }
+    ul{
+      list-style-type: none;
+      padding: 0;
+    }
+    li{
+      cursor: pointer;
+      padding: 15px 0;
+      text-align: right;
+      &:hover, &.selected{
+        a{
+          &:before{
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+    @include media('<=lg'){
+      max-width: 100%;
+      flex-basis: 100%;
+      &:after{
+        display: none;
+      }
+    }
+  }
+  .social-home-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    color: white;
+    img{
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+    a{
+      padding-bottom: 15px;
+      font-size: 1.5625em;
+      color: white;
+      transition: .2s ease-out;
+    }
+    @include media('<=lg'){
+      padding-left: 0;
+      span{
+        display: none;
+      }
+    }
+  }
+  @include media('<=lg'){
+    width: 100%;
+    justify-content: flex-end;
+    margin: 0;
+  }
+}

@@ -1,0 +1,14 @@
+@import 'gridle/gridle';
+@include g-setup( (
+        context : 12,
+        gutter-width : 20px,
+        direction : rtl,
+) );
+@include g-register-state ( mobile , (
+        max-width : 480px
+) );
+@include g-register-state ( tablet , (
+        min-width : 481px,
+        max-width : 1025px
+) ) ;
+@include g-classes();
