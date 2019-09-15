@@ -26,5 +26,8 @@
     "gulp-uglify-es": "^1.0.4",
     "jshint": "^2.9.6",
     "jshint-stylish": "^2.2.1"
+  },
+  "dependencies": {
+    "node-sass": "^4.12.0"
   }
 }

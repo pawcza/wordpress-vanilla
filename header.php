@@ -19,6 +19,6 @@
 <div class="overlay"><div class="close"></div></div>
 <header id="header" role="banner">
     <a href='<?php echo get_home_url()?>'>
-        <img src="<?php echo get_template_directory_uri() . '/assets/img/logo.png '?>">
+        <img src="<?php echo get_template_directory_uri() . '/assets/img/ak-logo.svg '?>">
     </a></header>
 <section id="content" role="main">

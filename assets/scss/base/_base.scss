@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lora:400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap');
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -41,6 +41,7 @@
   }
 }
 body{
+  background: linear-gradient(90deg, #ebebeb, #fff);
   >#header{
     display: inline-grid;
     a{
@@ -103,6 +104,11 @@ body{
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  @include media('<=lg') {
+    padding: 20px;
+    width: calc(100% - 40px);
+  }
 }
 .container-fluid{
   padding: 0;
@@ -191,7 +197,6 @@ body{
     height: 100%;
     justify-content: center;
     align-items: center;
-    max-width: calc(100vw - 50px);
     width: 100%;
     border-radius: 2px 2px 0 0;
     .caption-container{
@@ -253,23 +258,21 @@ body{
 }
 #welcoming{
   width: 100vw;
-  min-height: 100vh;
-  background: linear-gradient(90deg, #ffe5e5, #d4ada6);
-  display: flex;
-  justify-content: flex-start;
-  position: relative;
-  padding: 40px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  transition: .2s ease-out;
-  >*{
-    flex-basis: 50%;
-    max-width: 50%;
+  background: linear-gradient(90deg, #ebebeb, #fff);
+  .container {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    align-items: flex-start;
+    transition: .2s ease-out;
   }
   p{
     font-size: 3.5em;
     color: $olcza-black;
     text-align: left;
+    margin-bottom: 0;
+    padding-bottom: 40px;
+
     .krejzola{
       background: #ff3588;
       color: white;
@@ -291,11 +294,6 @@ body{
     100% {transform: translate3d(0,-20px,0)}
   }
   @include media('<=lg'){
-    padding: 25px;
-    >*{
-      flex-basis: 100%;
-      max-width: 100%;
-    }
     .right{
       flex-basis: 100% !important;
       max-width: 100% !important;
@@ -310,6 +308,9 @@ body{
 
   }
   @include media('<=md'){
+    .container {
+      flex-wrap: wrap;
+    }
     p{
       font-size: 2.5em;
     }
@@ -358,12 +359,17 @@ img{
     right: 20px;
   }
   img{
-    max-width: 100px;
-    transform: rotate(180deg);
+    width: 32px;
+    transform: rotate(0deg);
   }
   @include media('<md'){
-    img{
-      max-width: 50px;
+    right: initial;
+    left: -50px;
+    bottom: 10px;
+
+    &.active {
+      right: initial;
+      left: 10px;
     }
   }
 }

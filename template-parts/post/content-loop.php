@@ -27,10 +27,25 @@
         $classList = 'lazy article-image gallery-trigger';
     }
 ?>
-    <div class="<?php echo $categoryString; ?>article-container col-6 col-lg-3 col-md-4">
+    <div class="<?php echo $categoryString; ?>article-container col-6 col-lg-4 col-md-4">
         <article <?php post_class( array('entry') ); ?> id="post-<?php the_ID(); ?>" role="article">
             <div class="image-container">
-                <?php echo fly_get_attachment_image( get_post_thumbnail_id(), array( $width / 10, $height / 10 ), false, array('class' => $classList, 'data-gallery-trigger' => $post->ID, 'data-src' => $image_610['src'], 'data-sheight' => $image_610['height'], 'data-swidth' => $image_610['width'], 'data-original' => $image_full[0], 'data-height' => $height, 'data-width' => $width, 'data-caption' => $title  )); ?>
+                <?php echo fly_get_attachment_image(
+                        get_post_thumbnail_id(),
+                        array( $width / 10, $height / 10 ),
+                        false,
+                        array('class' => $classList,
+                            'data-gallery-trigger' => $post->ID,
+                            'data-src' => $image_610['src'],
+                            'data-sheight' => $image_610['height'],
+                            'data-swidth' => $image_610['width'],
+                            'data-original' => $image_full[0],
+                            'data-height' => $height,
+                            'data-width' => $width,
+                            'data-caption' => $title
+                        )
+                    );
+                ?>
             </div>
         </article>
     </div>

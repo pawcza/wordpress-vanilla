@@ -23,10 +23,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    iso.arrange({filter: document.querySelector('.filters li:first-of-type a').dataset.filter});
+
     // Layout isotope after each image loads to prevent overlapping
     var imgLoad = imagesLoaded( $container );
     imgLoad.on('progress', function( instance, image){
         iso.layout();
+        image.img.parentNode.classList.add('loaded');
     });
 
     //Add the class selected to the item that is clicked, and remove from the others
@@ -74,7 +77,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var goTop = document.getElementsByClassName('go-top')[0];
     document.addEventListener('scroll',function(){
-        if(window.scrollY > 2 * window.innerHeight){
+       var target = document.querySelector('.filter-row');
+       if(target.getBoundingClientRect().top <= 0) {
+           target.classList.add('active');
+       } else {
+           target.classList.remove('active');
+       }
+
+        if(window.scrollY > window.innerHeight){
             goTop.classList.add('active');
         } else {
             goTop.classList.remove('active');
