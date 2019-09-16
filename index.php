@@ -16,14 +16,20 @@
                 <span>What do i do?</span>
                 <ul class="filters">
                     <?php
+                    $i = 0;
                     $terms = get_terms("category"); // get all categories, but you can use any taxonomy
                     $count = count($terms); //How many are they?
                     if ( $count > 0 ){  //If there are more than 0 terms
                         foreach ( $terms as $term ) {  //for each term:
                             if ($term->name != 'Article'){
-                                echo "<li data-name=' $term->name '><a href='#' data-filter='.".$term->slug."'> $term->name </a></li>\n";
+                                if ($i == 0) {
+                                    echo "<li class='selected' data-name=' $term->name '><a href='#' data-filter='.".$term->slug."'> $term->name </a></li>\n";
+                                } else {
+                                    echo "<li data-name=' $term->name '><a href='#' data-filter='.".$term->slug."'> $term->name </a></li>\n";
+                                }
                                 //create a list item with the current term slug for sorting, and name for label
                             }
+                            $i++;
                         }
                     }
                     ?>

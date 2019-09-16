@@ -136,12 +136,12 @@
         cursor: pointer;
         transition: .25s ease-out;
         border-radius: 2px;
-        will-change: filter;
+        will-change: transform, filter;
         image-rendering: -webkit-optimize-contrast;
         width: 100%!important;
         &.lazy{
           filter: blur(2px);
-          transform: scale(1.15);
+          transform: scale(1.05);
         }
       }
       &:before {
@@ -209,6 +209,10 @@
   @include media('<sm'){
     article{
       margin: 5px;
+
+      .article-container {
+        min-height: 100px;
+      }
     }
   }
 }

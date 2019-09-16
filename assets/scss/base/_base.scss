@@ -135,20 +135,6 @@ body{
     opacity: 1;
     pointer-events: all;
   }
-  &:after{
-    transition: .2s ease-out;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50% ,-50%);
-    width: 32px;
-    height: 32px;
-    border: 1px solid #222;
-    content: '';
-    border-top: 1px solid transparent;
-    border-radius: 50%;
-    animation: loading-spinner 1s ease-in-out infinite;
-  }
   .close{
     position: fixed;
     width: 32px;
@@ -229,13 +215,10 @@ body{
       max-height: calc(100vh - 100px);
       position: relative;
       border-radius: 2px;
-      opacity: 0;
+      opacity: 1;
       box-shadow: 0 -10px 45px -10px rgba(0,0,0,.35);
       transition: .25s ease-out;
       will-change: transform;
-      &.loaded{
-        opacity: 1;
-      }
       @include media('<=lg'){
         max-width: calc(100vw - 50px);
         max-height: calc(100vh - 50px);

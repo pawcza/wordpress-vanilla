@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function filter(e){
 
         lazyLoad();
+        iso.layout();
+
         window.scrollTo({
                 top: document.getElementById('isotope-list').offsetTop - document.getElementsByClassName('filters')[1].offsetHeight,
                 behavior: 'smooth'
@@ -150,11 +152,22 @@ document.addEventListener('click', function(e){
         overlayContainer.appendChild(img_container);
         img_container.appendChild(clone);
         clone.classList.remove('article-image');
+
         img.setAttribute('src', $this.dataset.original);
+        img.style.opacity = '0';
+        img.style.position = 'absolute';
+        img_container.appendChild(img);
+
         img.addEventListener('load',function(){
-            clone.setAttribute('src', img.src);
-            overlayContainer.classList.add('loaded');
-            clone.classList.add('loaded');
+            var multiplier = img.offsetWidth / parseInt(e.target.dataset.swidth);
+            clone.style.transform = 'scale(' + multiplier + ')';
+            setTimeout(function () {
+                clone.setAttribute('src', img.src);
+                clone.style.width = img.offsetWidth + 'px';
+                clone.style.height = img.offsetHeight + 'px';
+                clone.style.transition = 'none';
+                clone.style.transform = 'scale(1)';
+            }, 300);
         });
     }
 
@@ -170,6 +183,8 @@ document.addEventListener('click', function(e){
 
         overlayContainer.appendChild(cloneGallery);
 
+        cloneGallery.style.display = 'block';
+
         var mySwiper = new Swiper (cloneGallery, {
             slidesPerView: 'auto',
             centeredSlides: true,
@@ -181,6 +196,9 @@ document.addEventListener('click', function(e){
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
+            },
+            keyboard: {
+                enabled: true
             }
         });
     }

@@ -6,7 +6,7 @@
     $height =           $image_full[2];
     $multiplier =       $width / 610;
     $title =            get_the_title();
-    $image_610 =        fly_get_attachment_image_src(get_post_thumbnail_id(), array(610, $height / $multiplier), false);
+    $image_610 =        fly_get_attachment_image_src(get_post_thumbnail_id(), array(610, $height / ($multiplier + 1)), false);
     $gallery =          get_post_gallery_images($post->ID);
     $classList =        'lazy article-image';
     foreach($categories as $category){
@@ -14,7 +14,7 @@
     }
 
     if (!empty($gallery)) {
-        echo "<div class='article-gallery swiper-container' id=" . $post->ID . ">";
+        echo "<div style='display: none;' class='article-gallery swiper-container' id=" . $post->ID . ">";
         echo "<div class='swiper-wrapper'>";
         foreach($gallery as $item) {
             echo "<div class='swiper-slide' style='background-image: url(" . $item . ")'></div>";
